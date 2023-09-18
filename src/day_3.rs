@@ -1,6 +1,5 @@
-use std::fs;
-
 use itertools::Itertools;
+use std::fs;
 
 pub fn rucksack_reorganization() {
     let input = fs::read_to_string("inputs/rucksack-reorganization").expect("error reading file");

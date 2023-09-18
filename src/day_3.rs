@@ -11,11 +11,7 @@ pub fn rucksack_reorganization() {
         .map(|(front, back)| {
             [front, back].map(|s| {
                 s.chars()
-                    .map(|c| match c {
-                        'a'..='z' => 1 + c as u32 - 'a' as u32,
-                        'A'..='Z' => 27 + c as u32 - 'A' as u32,
-                        _ => unreachable!(),
-                    })
+                    .map(|c| get_numeric_val_from_char(c))
                     .fold(0, |acc, num| acc | (1 << num))
             })
         })
@@ -32,12 +28,16 @@ pub fn rucksack_reorganization() {
                 .chars()
                 .find(|c| line_two.contains(*c) && line_three.contains(*c))
         })
-        .map(|c| match c {
-            'a'..='z' => 1 + c as u32 - 'a' as u32,
-            'A'..='Z' => 27 + c as u32 - 'A' as u32,
-            _ => unreachable!(),
-        })
+        .map(|c| get_numeric_val_from_char(c))
         .sum();
 
     println!("Part two: {:?}", part_two);
+}
+
+fn get_numeric_val_from_char(c: char) -> u32 {
+    match c {
+        'a'..='z' => 1 + c as u32 - 'a' as u32,
+        'A'..='Z' => 27 + c as u32 - 'A' as u32,
+        _ => unreachable!(),
+    }
 }

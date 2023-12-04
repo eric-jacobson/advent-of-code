@@ -47,7 +47,6 @@ public class Main {
                 }
             }
             if (!num.toString().isEmpty()) {
-                System.out.println(num);
                 sum += Integer.parseInt(num.toString());
             }
         }

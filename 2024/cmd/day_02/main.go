@@ -1,26 +1,23 @@
 package main
 
 import (
+	"2024/internal"
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
 
 func main() {
-	input, err := os.ReadFile("cmd/day_02/input")
-	if err != nil {
-		panic(err)
-	}
+	input := internal.ReadFile("cmd/day_02/input")
 
 	fmt.Println("Part 1, totalSafeReports: ", solve(input, false))
 	fmt.Println("Part 2, totalSafeReportsDampened: ", solve(input, true))
 }
 
-func solve(input []byte, dampen bool) int {
+func solve(input string, dampen bool) int {
 	totalSafeReports := 0
 
-	for _, line := range strings.Split(strings.TrimRight(string(input), "\n"), "\n") {
+	for _, line := range strings.Split(input, "\n") {
 		values := strings.Fields(line)
 		if validateSafety(values) { // part 1
 			totalSafeReports++

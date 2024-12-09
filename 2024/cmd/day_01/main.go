@@ -1,24 +1,21 @@
 package main
 
 import (
+	"2024/internal"
 	"fmt"
-	"os"
 	"sort"
 	"strconv"
 	"strings"
 )
 
 func main() {
-	input, err := os.ReadFile("cmd/day_01/input")
-	if err != nil {
-		panic(err)
-	}
+	input := internal.ReadFile("cmd/day_01/input")
 
 	var leftColumn []int
 	var rightColumn []int
 	rightColumnFrequency := make(map[int]int)
 
-	for _, line := range strings.Split(string(input), "\n") {
+	for _, line := range strings.Split(input, "\n") {
 		parts := strings.Fields(line)
 		if len(parts) == 2 {
 			left, err := strconv.Atoi(parts[0])
